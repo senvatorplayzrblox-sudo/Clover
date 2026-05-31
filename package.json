@@ -1,1 +1,12 @@
-
+{
+  "name": "clover",
+  "version": "1.0.0",
+  "description": "Clover Discord Bot",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "discord.js": "^14.21.0"
+  }
+}
