@@ -21,6 +21,28 @@ module.exports.execute = (client) => {
 
   message.reply("👋 Welcome back! Your AFK status has been removed.");
     }
+    for (const user of message.mentions.users.values()) {
+
+  if (!afk[user.id]) continue;
+
+  const since = Math.floor(
+    (Date.now() - afk[user.id].since) / 60000
+  );
+
+  message.reply(
+    `💤 ${user.username} is AFK: ${afk[user.id].reason}\n⏰ Since: ${since} minute(s) ago`
+  );
+
+  afk[user.id].mentions.push({
+    author: message.author.username,
+    message: message.content
+  });
+
+  fs.writeFileSync(
+    "./data/afk.json",
+    JSON.stringify(afk, null, 2)
+  );
+    }
 
     if (!users[message.author.id]) {
       users[message.author.id] = {
