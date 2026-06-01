@@ -8,6 +8,9 @@ module.exports.execute = (client) => {
     const users = JSON.parse(
       fs.readFileSync("./data/users.json", "utf8")
     );
+    const afk = JSON.parse(
+  fs.readFileSync("./data/afk.json", "utf8")
+);
 
     if (!users[message.author.id]) {
       users[message.author.id] = {
