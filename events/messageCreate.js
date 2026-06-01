@@ -12,6 +12,22 @@ module.exports.execute = (client) => {
   fs.readFileSync("./data/afk.json", "utf8")
 );
     if (afk[message.author.id]) {
+
+  const mentions = afk[message.author.id].mentions || [];
+
+  let mentionText = "";
+
+  if (mentions.length > 0) {
+    mentionText =
+      "\n\n📬 Missed Mentions:\n" +
+      mentions
+        .slice(-5)
+        .map(
+          m => `• ${m.author}: ${m.message}`
+        )
+        .join("\n");
+  }
+
   delete afk[message.author.id];
 
   fs.writeFileSync(
@@ -19,7 +35,9 @@ module.exports.execute = (client) => {
     JSON.stringify(afk, null, 2)
   );
 
-  message.reply("👋 Welcome back! Your AFK status has been removed.");
+  message.reply(
+    `👋 Welcome back! Your AFK status has been removed.${mentionText}`
+  );
     }
     for (const user of message.mentions.users.values()) {
 
