@@ -34,9 +34,10 @@ module.exports.execute = (client) => {
   );
 
   afk[user.id].mentions.push({
-    author: message.author.username,
-    message: message.content
-  });
+  author: message.author.username,
+  url: message.url,
+  time: Date.now()
+});
 
   fs.writeFileSync(
     "./data/afk.json",
