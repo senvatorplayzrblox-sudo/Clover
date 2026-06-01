@@ -13,8 +13,7 @@ module.exports.execute = (client) => {
       users[message.author.id] = {
         points: 0,
         messages: 0,
-        vcMinutes: 0,
-        inventory: []
+        vcMinutes: 0
       };
     }
 
@@ -29,12 +28,27 @@ module.exports.execute = (client) => {
       JSON.stringify(users, null, 2)
     );
 
-    if (message.content === "$profile") {
-      const user = users[message.author.id];
+    const prefix = "$";
 
-      message.reply(
-        `🌿 Profile\n\nPoints: ${user.points}\nMessages: ${user.messages}\nVC Minutes: ${user.vcMinutes}`
-      );
+    if (!message.content.startsWith(prefix)) return;
+
+    const args = message.content.slice(prefix.length).trim().split(/ +/);
+    const commandName = args.shift().toLowerCase();
+
+    const command = client.commands.get(commandName);
+
+    if (!command) return;
+
+    try {
+      if (command.execute) {
+        command.execute(message, users, args);
+      }
+    } catch (err) {
+      console.error(err);
+      message.reply("❌ Error while executing command.");
+    }
+  });
+};      );
     }
   });
 };
