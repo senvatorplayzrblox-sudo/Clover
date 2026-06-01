@@ -11,6 +11,16 @@ module.exports.execute = (client) => {
     const afk = JSON.parse(
   fs.readFileSync("./data/afk.json", "utf8")
 );
+    if (afk[message.author.id]) {
+  delete afk[message.author.id];
+
+  fs.writeFileSync(
+    "./data/afk.json",
+    JSON.stringify(afk, null, 2)
+  );
+
+  message.reply("👋 Welcome back! Your AFK status has been removed.");
+    }
 
     if (!users[message.author.id]) {
       users[message.author.id] = {
