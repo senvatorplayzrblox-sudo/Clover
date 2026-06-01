@@ -13,20 +13,10 @@ module.exports.execute = (client) => {
 );
     if (afk[message.author.id]) {
 
-  const mentions = afk[message.author.id].mentions || [];
+  const data = afk[message.author.id];
+  const mentions = data.mentions || [];
 
-  let mentionText = "";
-
-  if (mentions.length > 0) {
-    mentionText =
-      "\n\n📬 Missed Mentions:\n" +
-      mentions
-        .slice(-5)
-        .map(
-          m => `• ${m.author}: ${m.message}`
-        )
-        .join("\n");
-  }
+  let mentionText = `📬 Missed Mentions: ${mentions.length}`;
 
   delete afk[message.author.id];
 
@@ -36,7 +26,7 @@ module.exports.execute = (client) => {
   );
 
   message.reply(
-    `👋 Welcome back! Your AFK status has been removed.${mentionText}`
+    `👋 Welcome back!\n⏰ AFK removed\n📝 Reason: ${data.reason}\n${mentionText}`
   );
     }
     for (const user of message.mentions.users.values()) {
