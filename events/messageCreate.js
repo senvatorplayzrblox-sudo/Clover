@@ -92,7 +92,4 @@ module.exports.execute = (client) => {
       message.reply("❌ Error while executing command.");
     }
   });
-};      );
-    }
-  });
 };
