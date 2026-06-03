@@ -18,8 +18,10 @@ module.exports = {
     let text = "🛒 Clover Store\n\n";
 
     shop.roles.forEach((role, index) => {
-      text += `${index + 1}. ${role.name} - ${role.price} points\n`;
-    });
+  text += `${index + 1}. ${role.name}\n`;
+  text += `💰 Price: ${role.price} points\n`;
+  text += `📦 Stock: ${role.stock}\n\n`;
+});
 
     message.reply(text);
   }
