@@ -15,7 +15,7 @@ module.exports = {
     }
 
     const price = parseInt(args[0]);
-
+const stock = parseInt(args[1]);
     const role = message.mentions.roles.first();
 
     if (!price || !role) {
