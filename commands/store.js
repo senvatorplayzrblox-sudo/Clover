@@ -1,30 +1,36 @@
+const fs = require("fs");
 const { EmbedBuilder } = require("discord.js");
 
 module.exports = {
-  name: "profile",
+  name: "store",
 
-  execute(message, users) {
+  execute(message) {
 
-    const user = users[message.author.id];
+    const shop = JSON.parse(
+      fs.readFileSync("./data/shop.json", "utf8")
+    );
 
-    if (!user) {
-      return message.reply("❌ No profile data found yet.");
+    if (!shop.roles.length) {
+      return message.reply(
+        "🛒 Store is empty."
+      );
     }
 
-    const msgProgress = user.messages % 50;
-    const vcProgress = user.vcMinutes % 5;
-
     const embed = new EmbedBuilder()
-      .setTitle("🌿 Clover Profile")
-      .setDescription(
-`👤 User: ${message.author.username}
+      .setTitle("🛒 Clover Store");
 
-⭐ Points: ${user.points}
-💬 Messages: ${msgProgress}/50
-🎙️ VC Minutes: ${vcProgress}/5`
-      )
+    shop.roles.forEach((role, index) => {
+      embed.addFields({
+        name: `${index + 1}. ${role.name}`,
+        value:
+          `💰 Price: ${role.price} points\n📦 Stock: ${role.stock}`,
+        inline: false
+      });
+    });
+
+    embed
       .setFooter({
-        text: "Clover Economy System"
+        text: "Clover Economy Store"
       })
       .setTimestamp();
 
