@@ -30,8 +30,8 @@ const seconds = Math.floor((diff % 60000) / 1000);
   );
 
   message.reply(
-    `👋 Welcome back!\n⏰ AFK removed\n📝 Reason: ${data.reason}\n${mentionText}`
-  );
+  `👋 Welcome back!\n⏰ You were AFK for ${minutes}m ${seconds}s\n📝 Reason: ${data.reason}\n${mentionText}`
+);
     }
     for (const user of message.mentions.users.values()) {
 
