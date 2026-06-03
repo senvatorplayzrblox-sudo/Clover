@@ -15,6 +15,10 @@ module.exports.execute = (client) => {
 
   const data = afk[message.author.id];
   const mentions = data.mentions || [];
+      const diff = Date.now() - data.since;
+
+const minutes = Math.floor(diff / 60000);
+const seconds = Math.floor((diff % 60000) / 1000);
 
   let mentionText = `📬 Missed Mentions: ${mentions.length}`;
 
