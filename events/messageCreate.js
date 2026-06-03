@@ -34,12 +34,14 @@ module.exports.execute = (client) => {
   if (!afk[user.id]) continue;
 
   const since = Math.floor(
-    (Date.now() - afk[user.id].since) / 60000
-  );
+  const diff = Date.now() - afk[user.id].since;
 
-  message.reply(
-    `💤 ${user.username} is AFK: ${afk[user.id].reason}\n⏰ Since: ${since} minute(s) ago`
-  );
+const minutes = Math.floor(diff / 60000);
+const seconds = Math.floor((diff % 60000) / 1000);
+
+message.reply(
+  `💤 ${user.username} is AFK: ${afk[user.id].reason}\n⏰ Since: ${minutes}m ${seconds}s ago`
+);
 
   afk[user.id].mentions.push({
   author: message.author.username,
