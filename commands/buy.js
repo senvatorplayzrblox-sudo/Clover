@@ -28,6 +28,11 @@ module.exports = {
     }
 
     const user = users[message.author.id];
+    if (item.stock <= 0) {
+  return message.reply(
+    "❌ This role is out of stock."
+  );
+    }
     if (message.member.roles.cache.has(role.id)) {
   return message.reply(
     "❌ You already own this role."
