@@ -46,6 +46,7 @@ module.exports = {
     }
 
     user.points -= item.price;
+    item.stock--;
 
     fs.writeFileSync(
       "./data/users.json",
