@@ -28,6 +28,11 @@ module.exports = {
     }
 
     const user = users[message.author.id];
+    if (message.member.roles.cache.has(role.id)) {
+  return message.reply(
+    "❌ You already own this role."
+  );
+    }
 
     if (user.points < item.price) {
       return message.reply(
