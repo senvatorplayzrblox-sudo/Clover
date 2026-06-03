@@ -7,12 +7,16 @@ module.exports = {
       return message.reply("❌ No profile data found yet.");
     }
 
-    message.reply(
-      `🌿 ${message.author.username}'s Profile
+    const msgProgress = user.messages % 50;
+const vcProgress = user.vcMinutes % 5;
+
+message.reply(
+  `🌿 ${message.author.username}'s Profile
 
 ⭐ Points: ${user.points}
-💬 Messages: ${user.messages}
-🎙️ VC Minutes: ${user.vcMinutes}`
+💬 Messages: ${msgProgress}/50
+🎙️ VC Minutes: ${vcProgress}/5`
+);
     );
   }
 };
