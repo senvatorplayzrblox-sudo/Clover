@@ -37,8 +37,26 @@ const seconds = Math.floor((diff % 60000) / 1000);
 
   if (!afk[user.id]) continue;
 
-  const since = Math.floor(
   const diff = Date.now() - afk[user.id].since;
+
+  const minutes = Math.floor(diff / 60000);
+  const seconds = Math.floor((diff % 60000) / 1000);
+
+  message.reply(
+    `💤 ${user.username} is AFK: ${afk[user.id].reason}\n⏰ Since: ${minutes}m ${seconds}s ago`
+  );
+
+  afk[user.id].mentions.push({
+    author: message.author.username,
+    url: message.url,
+    time: Date.now()
+  });
+
+  fs.writeFileSync(
+    "./data/afk.json",
+    JSON.stringify(afk, null, 2)
+  );
+}
 
 const minutes = Math.floor(diff / 60000);
 const seconds = Math.floor((diff % 60000) / 1000);
