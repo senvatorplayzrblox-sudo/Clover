@@ -8,15 +8,14 @@ module.exports = {
     }
 
     const msgProgress = user.messages % 50;
-const vcProgress = user.vcMinutes % 5;
+    const vcProgress = user.vcMinutes % 5;
 
-message.reply(
-  `🌿 ${message.author.username}'s Profile
+    message.reply(
+      `🌿 ${message.author.username}'s Profile
 
 ⭐ Points: ${user.points}
 💬 Messages: ${msgProgress}/50
 🎙️ VC Minutes: ${vcProgress}/5`
-);
     );
   }
 };
