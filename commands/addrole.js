@@ -41,7 +41,7 @@ const stock = parseInt(args[1]);
     );
 
     message.reply(
-      `✅ Added ${role.name} for ${price} points.`
-    );
+  `✅ Added ${role.name} for ${price} points.\n📦 Stock: ${stock}`
+);
   }
 };
