@@ -18,10 +18,10 @@ module.exports = {
 const stock = parseInt(args[1]);
     const role = message.mentions.roles.first();
 
-    if (!price || !role) {
-      return message.reply(
-        "Usage: $addrole <price> @role"
-      );
+    if (!price || !stock || !role) {
+  return message.reply(
+    "Usage: $addrole <price> <stock> @role"
+  );
     }
 
     const shop = JSON.parse(
