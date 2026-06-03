@@ -29,10 +29,11 @@ const stock = parseInt(args[1]);
     );
 
     shop.roles.push({
-      name: role.name,
-      price,
-      roleId: role.id
-    });
+  name: role.name,
+  price,
+  stock,
+  roleId: role.id
+});
 
     fs.writeFileSync(
       "./data/shop.json",
