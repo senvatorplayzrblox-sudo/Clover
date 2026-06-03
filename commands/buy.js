@@ -52,6 +52,10 @@ module.exports = {
       "./data/users.json",
       JSON.stringify(users, null, 2)
     );
+    fs.writeFileSync(
+  "./data/shop.json",
+  JSON.stringify(shop, null, 2)
+);
 
     try {
 
