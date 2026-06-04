@@ -71,6 +71,43 @@ message.reply({
 });
 
 }
+};          "Usage: `$addrole <price> <stock> @role`"
+        )
+    ]
+  });
+}
+
+const shop = JSON.parse(
+  fs.readFileSync("./data/shop.json", "utf8")
+);
+
+shop.roles.push({
+  name: role.name,
+  price,
+  stock,
+  roleId: role.id
+});
+
+fs.writeFileSync(
+  "./data/shop.json",
+  JSON.stringify(shop, null, 2)
+);
+
+const embed = new EmbedBuilder()
+  .setTitle("✅ Role Added")
+  .setDescription(
+    `🎭 Role: ${role.name}\n💰 Price: ${price}\n📦 Stock: ${stock}`
+  )
+  .setFooter({
+    text: "Clover Store Setup"
+  })
+  .setTimestamp();
+
+message.reply({
+  embeds: [embed]
+});
+
+}
 };      "./data/shop.json",
       JSON.stringify(shop, null, 2)
     );
