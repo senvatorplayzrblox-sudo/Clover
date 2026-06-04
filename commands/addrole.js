@@ -1,42 +1,77 @@
 const fs = require("fs");
-const { PermissionsBitField } = require("discord.js");
+const {
+PermissionsBitField,
+EmbedBuilder
+} = require("discord.js");
 
 module.exports = {
-  name: "addrole",
+name: "addrole",
 
-  execute(message, users, args) {
+execute(message, users, args) {
 
-    if (
-      !message.member.permissions.has(
-        PermissionsBitField.Flags.Administrator
-      )
-    ) {
-      return message.reply("❌ Admin only.");
-    }
+if (
+  !message.member.permissions.has(
+    PermissionsBitField.Flags.Administrator
+  )
+) {
+  return message.reply({
+    embeds: [
+      new EmbedBuilder()
+        .setTitle("❌ Permission Denied")
+        .setDescription("Admin only.")
+    ]
+  });
+}
 
-    const price = parseInt(args[0]);
+const price = parseInt(args[0]);
 const stock = parseInt(args[1]);
-    const role = message.mentions.roles.first();
 
-    if (!price || !stock || !role) {
-  return message.reply(
-    "Usage: $addrole <price> <stock> @role"
-  );
-    }
+const role = message.mentions.roles.first();
 
-    const shop = JSON.parse(
-      fs.readFileSync("./data/shop.json", "utf8")
-    );
+if (!price || !stock || !role) {
+  return message.reply({
+    embeds: [
+      new EmbedBuilder()
+        .setTitle("❌ Invalid Usage")
+        .setDescription(
+          "Usage: `$addrole <price> <stock> @role`"
+        )
+    ]
+  });
+}
 
-    shop.roles.push({
+const shop = JSON.parse(
+  fs.readFileSync("./data/shop.json", "utf8")
+);
+
+shop.roles.push({
   name: role.name,
   price,
   stock,
   roleId: role.id
 });
 
-    fs.writeFileSync(
-      "./data/shop.json",
+fs.writeFileSync(
+  "./data/shop.json",
+  JSON.stringify(shop, null, 2)
+);
+
+const embed = new EmbedBuilder()
+  .setTitle("✅ Role Added")
+  .setDescription(
+    `🎭 Role: ${role.name}\n💰 Price: ${price}\n📦 Stock: ${stock}`
+  )
+  .setFooter({
+    text: "Clover Store Setup"
+  })
+  .setTimestamp();
+
+message.reply({
+  embeds: [embed]
+});
+
+}
+};      "./data/shop.json",
       JSON.stringify(shop, null, 2)
     );
 
