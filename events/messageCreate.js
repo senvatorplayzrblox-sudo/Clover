@@ -1,4 +1,5 @@
 const fs = require("fs");
+const { EmbedBuilder } = require("discord.js");
 
 module.exports.execute = (client) => {
 client.on("messageCreate", async (message) => {
