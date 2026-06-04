@@ -60,7 +60,7 @@ if (afk[message.author.id]) {
     mentionText += "\n\n";
 
     mentions.forEach((m, i) => {
-      mentionText += `${i + 1}. ${m.author}\n🔗 ${m.url}\n`;
+      mentionText += `${i + 1}. 🔗 ${m.url}\n`;
     });
   }
 
