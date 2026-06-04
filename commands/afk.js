@@ -1,26 +1,41 @@
 const fs = require("fs");
+const { EmbedBuilder } = require("discord.js");
 
 module.exports = {
-  name: "afk",
+name: "afk",
 
-  execute(message, users, args) {
-    const reason = args.join(" ") || "AFK";
+execute(message, users, args) {
 
-    const afk = JSON.parse(
-      fs.readFileSync("./data/afk.json", "utf8")
-    );
+const reason = args.join(" ") || "AFK";
 
-    afk[message.author.id] = {
-      reason,
-      since: Date.now(),
-      mentions: []
-    };
+const afk = JSON.parse(
+  fs.readFileSync("./data/afk.json", "utf8")
+);
 
-    fs.writeFileSync(
-      "./data/afk.json",
-      JSON.stringify(afk, null, 2)
-    );
+afk[message.author.id] = {
+  reason,
+  since: Date.now(),
+  mentions: []
+};
 
-    message.reply(`💤 You are now AFK: ${reason}`);
-  }
+fs.writeFileSync(
+  "./data/afk.json",
+  JSON.stringify(afk, null, 2)
+);
+
+const embed = new EmbedBuilder()
+  .setTitle("💤 AFK Enabled")
+  .setDescription(
+    `📝 Reason: ${reason}`
+  )
+  .setFooter({
+    text: "Clover AFK System"
+  })
+  .setTimestamp();
+
+message.reply({
+  embeds: [embed]
+});
+
+}
 };
