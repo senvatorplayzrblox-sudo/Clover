@@ -72,9 +72,19 @@ if (afk[message.author.id]) {
     JSON.stringify(afk, null, 2)
   );
 
-  message.reply(
-    `👋 Welcome back!\n⏰ You were AFK for ${duration}\n📝 Reason: ${data.reason}\n\n${mentionText}`
-  );
+  const embed = new EmbedBuilder()
+  .setTitle("👋 Welcome Back")
+  .setDescription(
+    `⏰ AFK Duration: ${duration}\n📝 Reason: ${data.reason}\n\n${mentionText}`
+  )
+  .setFooter({
+    text: "Clover AFK System"
+  })
+  .setTimestamp();
+
+message.reply({
+  embeds: [embed]
+});
 }
 
 // AFK MENTIONS
