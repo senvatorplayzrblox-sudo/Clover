@@ -66,8 +66,3 @@ message.reply({
 
 }
 };
-    message.reply(
-      `✅ Removed ${role.name} from the store.`
-    );
-  }
-};
