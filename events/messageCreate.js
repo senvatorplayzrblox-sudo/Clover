@@ -83,8 +83,7 @@ for (const user of message.mentions.users.values()) {
 
   const diff = Date.now() - afk[user.id].since;
 
-  const minutes = Math.floor(diff / 60000);
-  const seconds = Math.floor((diff % 60000) / 1000);
+  const duration = formatDuration(diff);
 
   message.reply(
     `💤 ${user.username} is AFK: ${afk[user.id].reason}\n⏰ Since: ${minutes}m ${seconds}s ago`
