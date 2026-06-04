@@ -96,9 +96,19 @@ for (const user of message.mentions.users.values()) {
 
   const duration = formatDuration(diff);
 
-  message.reply(
-    `💤 ${user.username} is AFK: ${afk[user.id].reason}\n⏰ Since: ${duration} ago`
-  );
+  const embed = new EmbedBuilder()
+  .setTitle("💤 User AFK")
+  .setDescription(
+    `👤 ${user.username}\n📝 Reason: ${afk[user.id].reason}\n⏰ Since: ${duration} ago`
+  )
+  .setFooter({
+    text: "Clover AFK System"
+  })
+  .setTimestamp();
+
+message.reply({
+  embeds: [embed]
+});
 
   afk[user.id].mentions.push({
     author: message.author.username,
