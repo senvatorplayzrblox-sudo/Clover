@@ -1,40 +1,71 @@
 const fs = require("fs");
-const { PermissionsBitField } = require("discord.js");
+const {
+PermissionsBitField,
+EmbedBuilder
+} = require("discord.js");
 
 module.exports = {
-  name: "removerole",
+name: "removerole",
 
-  execute(message) {
+execute(message) {
 
-    if (
-      !message.member.permissions.has(
-        PermissionsBitField.Flags.Administrator
-      )
-    ) {
-      return message.reply("❌ Admin only.");
-    }
+if (
+  !message.member.permissions.has(
+    PermissionsBitField.Flags.Administrator
+  )
+) {
+  return message.reply({
+    embeds: [
+      new EmbedBuilder()
+        .setTitle("❌ Permission Denied")
+        .setDescription("Admin only.")
+    ]
+  });
+}
 
-    const role = message.mentions.roles.first();
+const role = message.mentions.roles.first();
 
-    if (!role) {
-      return message.reply(
-        "Usage: $removerole @role"
-      );
-    }
+if (!role) {
+  return message.reply({
+    embeds: [
+      new EmbedBuilder()
+        .setTitle("❌ Invalid Usage")
+        .setDescription(
+          "Usage: `$removerole @role`"
+        )
+    ]
+  });
+}
 
-    const shop = JSON.parse(
-      fs.readFileSync("./data/shop.json", "utf8")
-    );
+const shop = JSON.parse(
+  fs.readFileSync("./data/shop.json", "utf8")
+);
 
-    shop.roles = shop.roles.filter(
-      r => r.roleId !== role.id
-    );
+shop.roles = shop.roles.filter(
+  r => r.roleId !== role.id
+);
 
-    fs.writeFileSync(
-      "./data/shop.json",
-      JSON.stringify(shop, null, 2)
-    );
+fs.writeFileSync(
+  "./data/shop.json",
+  JSON.stringify(shop, null, 2)
+);
 
+const embed = new EmbedBuilder()
+  .setTitle("✅ Role Removed")
+  .setDescription(
+    `🎭 Role: ${role.name}\n🗑️ Removed from store`
+  )
+  .setFooter({
+    text: "Clover Store Setup"
+  })
+  .setTimestamp();
+
+message.reply({
+  embeds: [embed]
+});
+
+}
+};
     message.reply(
       `✅ Removed ${role.name} from the store.`
     );
