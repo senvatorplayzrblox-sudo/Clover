@@ -72,7 +72,7 @@ if (afk[message.author.id]) {
   );
 
   message.reply(
-    `👋 Welcome back!\n⏰ You were AFK for ${minutes}m ${seconds}s\n📝 Reason: ${data.reason}\n\n${mentionText}`
+    `👋 Welcome back!\n⏰ You were AFK for ${duration}\n📝 Reason: ${data.reason}\n\n${mentionText}`
   );
 }
 
