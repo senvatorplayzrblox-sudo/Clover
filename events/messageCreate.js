@@ -13,6 +13,36 @@ const users = JSON.parse(
 const afk = JSON.parse(
   fs.readFileSync("./data/afk.json", "utf8")
 );
+  function formatDuration(ms) {
+
+  let seconds = Math.floor(ms / 1000);
+
+  const years = Math.floor(seconds / 31536000);
+  seconds %= 31536000;
+
+  const months = Math.floor(seconds / 2592000);
+  seconds %= 2592000;
+
+  const days = Math.floor(seconds / 86400);
+  seconds %= 86400;
+
+  const hours = Math.floor(seconds / 3600);
+  seconds %= 3600;
+
+  const minutes = Math.floor(seconds / 60);
+  seconds %= 60;
+
+  const parts = [];
+
+  if (years) parts.push(`${years}y`);
+  if (months) parts.push(`${months}mo`);
+  if (days) parts.push(`${days}d`);
+  if (hours) parts.push(`${hours}h`);
+  if (minutes) parts.push(`${minutes}m`);
+  if (seconds) parts.push(`${seconds}s`);
+
+  return parts.join(" ") || "0s";
+  }
 
 // AFK REMOVE
 if (afk[message.author.id]) {
