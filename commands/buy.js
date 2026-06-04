@@ -11,6 +11,8 @@ const role =
   message.guild.roles.cache.get(
     args[0]?.replace(/[<@&>]/g, "")
   );
+  console.log("ARGS:", args);
+console.log("ROLE:", role?.name);
 
 if (!role) {
   return message.reply({
