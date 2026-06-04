@@ -59,7 +59,7 @@ if (afk[message.author.id]) {
   if (mentions.length > 0) {
     mentionText += "\n\n";
 
-    mentions.slice(-5).forEach((m, i) => {
+    mentions.forEach((m, i) => {
       mentionText += `${i + 1}. ${m.author}\n🔗 ${m.url}\n`;
     });
   }
