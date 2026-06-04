@@ -6,7 +6,11 @@ name: "buy",
 
 async execute(message, users, args) {
 
-const role = message.mentions.roles.first();
+const role =
+  message.mentions.roles.first() ||
+  message.guild.roles.cache.get(
+    args[0]?.replace(/[<@&>]/g, "")
+  );
 
 if (!role) {
   return message.reply({
