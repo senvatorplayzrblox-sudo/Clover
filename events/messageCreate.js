@@ -86,7 +86,7 @@ for (const user of message.mentions.users.values()) {
   const duration = formatDuration(diff);
 
   message.reply(
-    `💤 ${user.username} is AFK: ${afk[user.id].reason}\n⏰ Since: ${minutes}m ${seconds}s ago`
+    `💤 ${user.username} is AFK: ${afk[user.id].reason}\n⏰ Since: ${duration} ago`
   );
 
   afk[user.id].mentions.push({
