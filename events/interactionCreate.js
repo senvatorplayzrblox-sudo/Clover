@@ -112,8 +112,10 @@ const embed = new EmbedBuilder()
 description || "No data yet."
 )
 .setFooter({
-text:
-"Page ${page + 1}/${Math.max( 1, maxPage + 1 )}"
+  text: `Page ${page + 1}/${Math.max(
+    1,
+    maxPage + 1
+  )}`
 });
 
 const row = new ActionRowBuilder()
