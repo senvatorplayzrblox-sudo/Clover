@@ -1,51 +1,86 @@
-const { EmbedBuilder } = require("discord.js");
+const {
+EmbedBuilder,
+ActionRowBuilder,
+ButtonBuilder,
+ButtonStyle
+} = require("discord.js");
 
 module.exports = {
-  name: "leaderboard",
+name: "leaderboard",
 
-  execute(message, users) {
+execute(message, users) {
 
-    const sorted = Object.entries(users)
-      .sort((a, b) => b[1].points - a[1].points);
+const sorted = Object.entries(users)
+  .sort((a, b) => b[1].points - a[1].points);
 
-    const top10 = sorted.slice(0, 10);
+const page = 0;
+const perPage = 10;
 
-    let description = "";
+const pageUsers = sorted.slice(
+  page * perPage,
+  page * perPage + perPage
+);
 
-    top10.forEach((user, index) => {
+let description = "";
 
-      let medal = `#${index + 1}`;
+pageUsers.forEach((user, index) => {
 
-      if (index === 0) medal = "🥇";
-      if (index === 1) medal = "🥈";
-      if (index === 2) medal = "🥉";
+  const rank = index + 1;
 
-      description += `${medal} <@${user[0]}> — ⭐ ${user[1].points}\n`;
-    });
+  let medal = `#${rank}`;
 
-    const userRank =
-      sorted.findIndex(
-        u => u[0] === message.author.id
-      ) + 1;
+  if (rank === 1) medal = "🥇";
+  if (rank === 2) medal = "🥈";
+  if (rank === 3) medal = "🥉";
 
-    const embed = new EmbedBuilder()
-      .setTitle("🏆 Clover Leaderboard")
-      .setDescription(
-        description || "No data yet."
+  description +=
+    `${medal} <@${user[0]}> — ⭐ ${user[1].points}\n`;
+});
+
+const userRank =
+  sorted.findIndex(
+    u => u[0] === message.author.id
+  ) + 1;
+
+const embed = new EmbedBuilder()
+  .setTitle("🏆 Clover Leaderboard")
+  .setDescription(
+    description || "No data yet."
+  )
+  .addFields({
+    name: "📍 Your Rank",
+    value: `#${userRank || "N/A"}`
+  })
+  .setFooter({
+    text:
+      `Page 1/${Math.max(
+        1,
+        Math.ceil(sorted.length / perPage)
+      )}`
+  })
+  .setTimestamp();
+
+const row = new ActionRowBuilder()
+  .addComponents(
+    new ButtonBuilder()
+      .setCustomId("lb_prev_0")
+      .setLabel("◀️")
+      .setStyle(ButtonStyle.Secondary)
+      .setDisabled(true),
+
+    new ButtonBuilder()
+      .setCustomId("lb_next_0")
+      .setLabel("▶️")
+      .setStyle(ButtonStyle.Secondary)
+      .setDisabled(
+        sorted.length <= perPage
       )
-      .addFields({
-        name: "📍 Your Rank",
-        value: `#${userRank || "N/A"}`,
-        inline: false
-      })
-      .setFooter({
-        text: "Clover Economy System"
-      })
-      .setTimestamp();
+  );
 
-    message.reply({
-      embeds: [embed]
-    });
+message.reply({
+  embeds: [embed],
+  components: [row]
+});
 
-  }
+}
 };
