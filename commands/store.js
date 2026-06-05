@@ -18,11 +18,18 @@ module.exports = {
       return message.reply("🛒 Store is empty.");
     }
 
-    const embed = new EmbedBuilder()
-      .setTitle("🛒 Clover Store")
-      .setDescription(
-        "Select a role from the dropdown below."
-      )
+    let description = "";
+
+shop.roles.forEach((role, index) => {
+  description +=
+    `${index + 1}. 🎭 ${role.name}\n` +
+    `💰 ${role.price} points\n` +
+    `📦 Stock: ${role.stock}\n\n`;
+});
+
+const embed = new EmbedBuilder()
+  .setTitle("🛒 Clover Store")
+  .setDescription(description)
       .setFooter({
         text: "Clover Economy Store"
       })
