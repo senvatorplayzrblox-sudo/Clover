@@ -121,7 +121,7 @@ description || "No data yet."
 const row = new ActionRowBuilder()
 .addComponents(
 new ButtonBuilder()
-.setCustomId("lb_prev_${page}")
+.setCustomId(`lb_prev_${page}`)
 .setLabel("◀️")
 .setStyle(ButtonStyle.Secondary)
 .setDisabled(page === 0),
