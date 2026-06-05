@@ -47,6 +47,95 @@ module.exports.execute = (client) => {
         ephemeral: true
       });
     }
+    // LEADERBOARD PAGINATION
+if (
+interaction.isButton() &&
+(
+interaction.customId.startsWith("lb_prev_") ||
+interaction.customId.startsWith("lb_next_")
+)
+) {
+
+const users = JSON.parse(
+fs.readFileSync("./data/users.json", "utf8")
+);
+
+const sorted = Object.entries(users)
+.sort((a, b) => b[1].points - a[1].points);
+
+const perPage = 10;
+
+let page = parseInt(
+interaction.customId.split("_")[2]
+);
+
+if (
+interaction.customId.startsWith("lb_next_")
+) {
+page++;
+} else {
+page--;
+}
+
+const maxPage =
+Math.ceil(sorted.length / perPage) - 1;
+
+if (page < 0) page = 0;
+if (page > maxPage) page = maxPage;
+
+const pageUsers = sorted.slice(
+page * perPage,
+page * perPage + perPage
+);
+
+let description = "";
+
+pageUsers.forEach((user, index) => {
+
+const rank =
+  page * perPage + index + 1;
+
+let medal = `#${rank}`;
+
+if (rank === 1) medal = "🥇";
+if (rank === 2) medal = "🥈";
+if (rank === 3) medal = "🥉";
+
+description +=
+  `${medal} <@${user[0]}> — ⭐ ${user[1].points}\n`;
+
+});
+
+const embed = new EmbedBuilder()
+.setTitle("🏆 Clover Leaderboard")
+.setDescription(
+description || "No data yet."
+)
+.setFooter({
+text:
+"Page ${page + 1}/${Math.max( 1, maxPage + 1 )}"
+});
+
+const row = new ActionRowBuilder()
+.addComponents(
+new ButtonBuilder()
+.setCustomId("lb_prev_${page}")
+.setLabel("◀️")
+.setStyle(ButtonStyle.Secondary)
+.setDisabled(page === 0),
+
+  new ButtonBuilder()
+    .setCustomId(`lb_next_${page}`)
+    .setLabel("▶️")
+    .setStyle(ButtonStyle.Secondary)
+    .setDisabled(page >= maxPage)
+);
+
+return interaction.update({
+embeds: [embed],
+components: [row]
+});
+}
 
     // BUY BUTTON
 if (interaction.isButton()) {
