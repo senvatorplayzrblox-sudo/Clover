@@ -7,6 +7,7 @@ module.exports.execute = (client) => {
   client.on("voiceStateUpdate", (oldState, newState) => {
 
     const userId = newState.id;
+    const guildId = newState.guild.id;
 
     if (!oldState.channelId && newState.channelId) {
 
