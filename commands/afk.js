@@ -17,7 +17,7 @@ if (!afk[guildId]) {
   afk[guildId] = {};
 }
 
-afk[message.author.id] = {
+afk[guildId][message.author.id] = {
   reason,
   since: Date.now(),
   mentions: []
