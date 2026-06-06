@@ -14,6 +14,10 @@ const users = JSON.parse(
 const afk = JSON.parse(
   fs.readFileSync("./data/afk.json", "utf8")
 );
+  const guildId = message.guild.id;
+
+if (!users[guildId]) users[guildId] = {};
+if (!afk[guildId]) afk[guildId] = {};
   function formatDuration(ms) {
 
   let seconds = Math.floor(ms / 1000);
