@@ -21,7 +21,7 @@ if (!shop[guildId]) {
   };
 }
 
-    if (!shop.roles.length) {
+    if (!shop[guildId].roles.length) {
       return message.reply("🛒 Store is empty.");
     }
 
