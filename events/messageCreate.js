@@ -94,7 +94,7 @@ message.reply({
 // AFK MENTIONS
 for (const user of message.mentions.users.values()) {
 
-  if (!afk[user.id]) continue;
+  if (!afk[guildId][user.id]) continue;
 
   const diff = Date.now() - afk[user.id].since;
 
