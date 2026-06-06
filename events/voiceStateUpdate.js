@@ -31,7 +31,9 @@ module.exports.execute = (client) => {
         fs.readFileSync("./data/users.json", "utf8")
       );
 
-      if (!users[userId]) return;
+      if (!users[guildId]) return;
+
+if (!users[guildId][userId]) return;
 
       users[userId].vcMinutes += minutes;
 
