@@ -35,7 +35,7 @@ module.exports.execute = (client) => {
 
 if (!users[guildId][userId]) return;
 
-      users[userId].vcMinutes += minutes;
+      users[guildId][userId].vcMinutes += minutes;
 
       users[userId].points += Math.floor(
         minutes / 5
