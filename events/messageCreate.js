@@ -52,7 +52,7 @@ if (!afk[guildId]) afk[guildId] = {};
 // AFK REMOVE
 if (afk[guildId][message.author.id]) {
 
-  const data = afk[message.author.id];
+  const data = afk[guildId][message.author.id];
   const mentions = data.mentions || [];
 
   const diff = Date.now() - data.since;
