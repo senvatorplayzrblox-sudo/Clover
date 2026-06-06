@@ -127,8 +127,8 @@ message.reply({
 }
 
 // USER DATA
-if (!users[message.author.id]) {
-  users[message.author.id] = {
+if (!users[guildId][message.author.id]) {
+  users[guildId][message.author.id] = {
     points: 0,
     messages: 0,
     vcMinutes: 0
