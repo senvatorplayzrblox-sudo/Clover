@@ -139,8 +139,7 @@ if (!users[guildId][message.author.id]) {
 users[guildId][message.author.id].messages++;
 
 if (users[guildId][message.author.id].messages % 50 === 0) {
-  users[message.author.id].points++;
-}
+  users[guildId][message.author.id].points++;}
 
 fs.writeFileSync(
   "./data/users.json",
