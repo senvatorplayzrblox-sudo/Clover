@@ -69,7 +69,7 @@ if (afk[guildId][message.author.id]) {
     });
   }
 
-  delete afk[message.author.id];
+  delete afk[guildId][message.author.id];
 
   fs.writeFileSync(
     "./data/afk.json",
