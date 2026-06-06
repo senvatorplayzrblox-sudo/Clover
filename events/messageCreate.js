@@ -136,7 +136,7 @@ if (!users[guildId][message.author.id]) {
 }
 
 // MESSAGE XP
-users[message.author.id].messages++;
+users[guildId][message.author.id].messages++;
 
 if (users[message.author.id].messages % 50 === 0) {
   users[message.author.id].points++;
