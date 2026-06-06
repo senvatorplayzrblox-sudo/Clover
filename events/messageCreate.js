@@ -114,7 +114,7 @@ message.reply({
   embeds: [embed]
 });
 
-  afk[user.id].mentions.push({
+  afk[guildId][user.id].mentions.push({
     author: message.author.username,
     url: message.url,
     time: Date.now()
