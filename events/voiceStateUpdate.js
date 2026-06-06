@@ -37,9 +37,9 @@ if (!users[guildId][userId]) return;
 
       users[guildId][userId].vcMinutes += minutes;
 
-      users[userId].points += Math.floor(
-        minutes / 5
-      );
+      users[guildId][userId].points += Math.floor(
+  minutes / 5
+);
 
       fs.writeFileSync(
         "./data/users.json",
