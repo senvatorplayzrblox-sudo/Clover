@@ -50,7 +50,7 @@ if (!afk[guildId]) afk[guildId] = {};
   }
 
 // AFK REMOVE
-if (afk[message.author.id]) {
+if (afk[guildId][message.author.id]) {
 
   const data = afk[message.author.id];
   const mentions = data.mentions || [];
