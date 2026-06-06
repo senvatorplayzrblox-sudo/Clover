@@ -13,6 +13,13 @@ module.exports = {
     const shop = JSON.parse(
       fs.readFileSync("./data/shop.json", "utf8")
     );
+    const guildId = message.guild.id;
+
+if (!shop[guildId]) {
+  shop[guildId] = {
+    roles: []
+  };
+}
 
     if (!shop.roles.length) {
       return message.reply("🛒 Store is empty.");
