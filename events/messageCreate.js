@@ -164,7 +164,11 @@ if (!command) return;
 try {
 
   if (command.execute) {
-    command.execute(message, users, args);
+    command.execute(
+  message,
+  users[guildId],
+  args
+);
   }
 
 } catch (err) {
