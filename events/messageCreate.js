@@ -103,7 +103,7 @@ for (const user of message.mentions.users.values()) {
   const embed = new EmbedBuilder()
   .setTitle("💤 User AFK")
   .setDescription(
-    `👤 ${user.username}\n📝 Reason: ${afk[user.id].reason}\n⏰ Since: ${duration} ago`
+    `👤 ${user.username}\n📝 Reason: ${afk[guildId][user.id].reason}\n⏰ Since: ${duration} ago`
   )
   .setFooter({
     text: "Clover AFK System"
