@@ -11,6 +11,11 @@ const reason = args.join(" ") || "AFK";
 const afk = JSON.parse(
   fs.readFileSync("./data/afk.json", "utf8")
 );
+  const guildId = message.guild.id;
+
+if (!afk[guildId]) {
+  afk[guildId] = {};
+}
 
 afk[message.author.id] = {
   reason,
