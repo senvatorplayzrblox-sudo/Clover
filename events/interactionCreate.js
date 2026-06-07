@@ -177,9 +177,9 @@ if (!users[guildId]) {
   users[guildId] = {};
 }
 
-  const item = shop.roles.find(
-    r => r.roleId === roleId
-  );
+  const item = shop[guildId].roles.find(
+  r => r.roleId === roleId
+);
 
   const role = interaction.guild.roles.cache.get(roleId);
 
