@@ -35,7 +35,7 @@ if (!shop[guildId]) {
   };
 }
 
-const item = shop.roles.find(
+const item = shop[guildId].roles.find(
   r => r.roleId === role.id
 );
 
