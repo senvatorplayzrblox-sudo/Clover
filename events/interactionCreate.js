@@ -198,8 +198,7 @@ if (!users[guildId]) {
     };
   }
 
-  const user = users[interaction.user.id];
-
+  const user = users[guildId][interaction.user.id];
   if (item.stock <= 0) {
     return interaction.reply({
       content: "❌ Out of stock.",
