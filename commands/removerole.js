@@ -48,7 +48,8 @@ if (!shop[guildId]) {
   };
 }
 
-shop.roles = shop.roles.filter(
+shop[guildId].roles =
+shop[guildId].roles.filter(
   r => r.roleId !== role.id
 );
 
