@@ -72,7 +72,7 @@ if (!users[guildId]) {
   users[guildId] = {};
 }
 
-const sorted = Object.entries(users)
+const sorted = Object.entries(users[guildId])
 .sort((a, b) => b[1].points - a[1].points);
 
 const perPage = 10;
