@@ -191,7 +191,7 @@ if (!users[guildId]) {
   }
 
   if (!users[guildId][interaction.user.id]) {
-    users[interaction.user.id] = {
+    users[guildId][interaction.user.id] = {
       points: 0,
       messages: 0,
       vcMinutes: 0
