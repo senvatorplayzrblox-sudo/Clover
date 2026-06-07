@@ -43,8 +43,15 @@ if (!price || !stock || !role) {
 const shop = JSON.parse(
   fs.readFileSync("./data/shop.json", "utf8")
 );
+  const guildId = message.guild.id;
 
-shop.roles.push({
+if (!shop[guildId]) {
+  shop[guildId] = {
+    roles: []
+  };
+}
+
+shop[guildId].roles.push({({
   name: role.name,
   price,
   stock,
