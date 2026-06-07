@@ -55,7 +55,7 @@ if (afk[guildId][message.author.id]) {
   const data = afk[guildId][message.author.id];
   const mentions = data.mentions || [];
 
-  const diff = Date.now() - afk[guildId][user.id].since;
+  const diff = Date.now() - data.since;
 
   const duration = formatDuration(diff);
 
