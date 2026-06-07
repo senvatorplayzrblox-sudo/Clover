@@ -190,7 +190,7 @@ if (!users[guildId]) {
     });
   }
 
-  if (!users[interaction.user.id]) {
+  if (!users[guildId][interaction.user.id]) {
     users[interaction.user.id] = {
       points: 0,
       messages: 0,
