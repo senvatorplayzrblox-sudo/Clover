@@ -27,7 +27,7 @@ if (!shop[guildId]) {
 
     let description = "";
 
-shop.roles.forEach((role, index) => {
+shop[guildId].roles.forEach((role, index) => {
   description +=
     `${index + 1}. 🎭 ${role.name}\n` +
     `💰 ${role.price} points\n` +
@@ -46,7 +46,7 @@ const embed = new EmbedBuilder()
       .setCustomId("store_select")
       .setPlaceholder("🌿 Select a role");
 
-    shop.roles.forEach(role => {
+    shop[guildId].roles.forEach(role => {
       menu.addOptions({
         label: role.name,
         description: `${role.price} points | Stock: ${role.stock}`,
