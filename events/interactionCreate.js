@@ -165,6 +165,17 @@ if (interaction.isButton()) {
   const users = JSON.parse(
     fs.readFileSync("./data/users.json", "utf8")
   );
+  const guildId = interaction.guild.id;
+
+if (!shop[guildId]) {
+  shop[guildId] = {
+    roles: []
+  };
+}
+
+if (!users[guildId]) {
+  users[guildId] = {};
+}
 
   const item = shop.roles.find(
     r => r.roleId === roleId
