@@ -40,6 +40,13 @@ if (!role) {
 const shop = JSON.parse(
   fs.readFileSync("./data/shop.json", "utf8")
 );
+  const guildId = message.guild.id;
+
+if (!shop[guildId]) {
+  shop[guildId] = {
+    roles: []
+  };
+}
 
 shop.roles = shop.roles.filter(
   r => r.roleId !== role.id
