@@ -51,7 +51,7 @@ if (!shop[guildId]) {
   };
 }
 
-shop[guildId].roles.push({({
+shop[guildId].roles.push({
   name: role.name,
   price,
   stock,
