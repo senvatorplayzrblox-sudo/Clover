@@ -96,7 +96,7 @@ for (const user of message.mentions.users.values()) {
 
   if (!afk[guildId][user.id]) continue;
 
-  const diff = Date.now() - afk[user.id].since;
+  const diff = Date.now() - afk[guildId][user.id].since;
 
   const duration = formatDuration(diff);
 
