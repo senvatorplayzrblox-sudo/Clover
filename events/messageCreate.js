@@ -78,7 +78,7 @@ if (afk[guildId][message.author.id]) {
   const embed = new EmbedBuilder()
   .setTitle("👋 Welcome Back")
   .setDescription(
-    `⏰ AFK Duration: ${duration}\n📝 Reason: ${data.reason}\n\n${mentionText}`
+    `⏰ AFK Duration: ${duration}\n📝 Reason: ${data.reason}\n${mentionText}`
   )
   .setFooter({
   text: `Mentions: ${mentions.length}`
