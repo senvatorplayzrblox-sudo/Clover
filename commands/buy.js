@@ -117,7 +117,9 @@ fs.writeFileSync(
     embeds: [embed]
   });
 
-} catch {
+} catch (err) {
+
+  console.log(err);
 
   message.reply({
     embeds: [
