@@ -62,8 +62,7 @@ if (afk[guildId][message.author.id]) {
   let mentionText = "";
 
   if (mentions.length > 0) {
-    mentionText += "\n\n";
-
+    mentionText += "\n";
     mentions.forEach((m, i) => {
       mentionText += `**#${i + 1}** [Jump to Message](${m.url})\n`;
     });
