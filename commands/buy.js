@@ -89,7 +89,13 @@ if (user.points < item.price) {
 
 try {
 
+  try {
   await message.member.roles.add(role);
+  console.log("ROLE GIVEN:", role.name);
+} catch (err) {
+  console.log("ROLE ERROR:", err);
+  throw err;
+}
   user.points -= item.price;
 item.stock--;
 
