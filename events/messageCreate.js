@@ -164,7 +164,6 @@ const commandName = args.shift().toLowerCase();
 const command = client.commands.get(commandName);
 
 if (!command) return;
-
 try {
 
   if (command.execute) {
