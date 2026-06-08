@@ -107,7 +107,7 @@ for (const user of message.mentions.users.values()) {
     `💤 ${user.username} is AFK\n📝 Reason: ${afk[guildId][user.id].reason}\n⏰ Since: ${duration} ago`
   )
   .setFooter({
-  text: `Mentions: ${mentions.length}`
+  text: "Clover AFK System"
 })
   .setTimestamp();
 
