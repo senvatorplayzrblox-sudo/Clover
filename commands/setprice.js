@@ -49,9 +49,9 @@ if (!shop[guildId]) {
   };
 }
 
-    const item = shop.roles.find(
-      r => r.roleId === role.id
-    );
+    const item = shop[guildId].roles.find(
+  r => r.roleId === role.id
+);
 
     if (!item) {
       return message.reply({
