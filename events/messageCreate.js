@@ -65,7 +65,7 @@ if (afk[guildId][message.author.id]) {
     mentionText += "\n\n";
 
     mentions.forEach((m, i) => {
-      mentionText += `${i + 1}. [Jump to Message](${m.url})\n`;
+      mentionText += `**#${i + 1}** [Jump to Message](${m.url})\n`;
     });
   }
 
