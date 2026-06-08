@@ -83,7 +83,10 @@ if (user.points < item.price) {
   });
 }
 
-user.points -= item.price;
+try {
+
+  await message.member.roles.add(role);
+  user.points -= item.price;
 item.stock--;
 
 fs.writeFileSync(
@@ -95,10 +98,6 @@ fs.writeFileSync(
   "./data/shop.json",
   JSON.stringify(shop, null, 2)
 );
-
-try {
-
-  await message.member.roles.add(role);
 
   const embed = new EmbedBuilder()
     .setTitle("✅ Purchase Successful")
