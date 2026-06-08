@@ -41,6 +41,13 @@ module.exports = {
     const shop = JSON.parse(
       fs.readFileSync("./data/shop.json", "utf8")
     );
+    const guildId = message.guild.id;
+
+if (!shop[guildId]) {
+  shop[guildId] = {
+    roles: []
+  };
+}
 
     const item = shop.roles.find(
       r => r.roleId === role.id
