@@ -82,8 +82,8 @@ if (afk[guildId][message.author.id]) {
     `⏰ AFK Duration: ${duration}\n📝 Reason: ${data.reason}\n\n${mentionText}`
   )
   .setFooter({
-    text: "Clover AFK System"
-  })
+  text: `Mentions: ${mentions.length}`
+})
   .setTimestamp();
 
 message.reply({
