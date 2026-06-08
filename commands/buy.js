@@ -51,6 +51,10 @@ if (!item) {
 
 const user = users[message.author.id];
 
+console.log("ROLE EXISTS:", !!role);
+console.log("ITEM EXISTS:", !!item);
+console.log("USER:", user);
+
 if (item.stock <= 0) {
   return message.reply({
     embeds: [
