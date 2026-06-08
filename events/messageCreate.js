@@ -102,18 +102,22 @@ for (const user of message.mentions.users.values()) {
 
   const embed = new EmbedBuilder()
   .setTitle("💤 User AFK")
+  .setColor("Yellow")
   .setDescription(
-    `👤 ${user.username}\n📝 Reason: ${afk[guildId][user.id].reason}\n⏰ Since: ${duration} ago`
+    `💤 ${user.username} is AFK\n📝 Reason: ${afk[guildId][user.id].reason}\n⏰ Since: ${duration} ago`
   )
   .setFooter({
     text: "Clover AFK System"
   })
   .setTimestamp();
 
-message.reply({
+const reply = await message.reply({
   embeds: [embed]
 });
 
+setTimeout(() => {
+  reply.delete().catch(() => {});
+}, 15000);
   afk[guildId][user.id].mentions.push({
     author: message.author.username,
     url: message.url,
