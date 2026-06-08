@@ -59,7 +59,7 @@ if (afk[guildId][message.author.id]) {
 
   const duration = formatDuration(diff);
 
-  let mentionText = `📬 Missed Mentions: ${mentions.length}`;
+  let mentionText = `📬 Mentions: ${mentions.length}`;
 
   if (mentions.length > 0) {
     mentionText += "\n\n";
