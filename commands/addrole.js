@@ -50,6 +50,22 @@ if (!shop[guildId]) {
     roles: []
   };
 }
+  const existingRole =
+shop[guildId].roles.find(
+  r => r.roleId === role.id
+);
+
+if (existingRole) {
+  return message.reply({
+    embeds: [
+      new EmbedBuilder()
+        .setTitle("❌ Already Added")
+        .setDescription(
+          "That role is already in the store."
+        )
+    ]
+  });
+}
 
 shop[guildId].roles.push({
   name: role.name,
