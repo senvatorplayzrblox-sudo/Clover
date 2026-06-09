@@ -2,6 +2,7 @@ module.exports = {
 point: "<:point:1513901104486678589>",
 clover: "<:clover:1513901351749292102>",
 role: "<:role:1513900720942878850>",
+stock: "<:stock:1513899322511724655>", 
 success: "<:success:1513900644384112783>",
 error: "<:error:1513900494089621544>",
 welcome: "<:welcome:1513900442407538868>",
