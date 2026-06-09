@@ -31,7 +31,7 @@ if (rank === 1) medal = emoji.gold;
 if (rank === 2) medal = emoji.silver;
 if (rank === 3) medal = emoji.bronze;
   description +=
-    `${medal} <@${user[0]}> — ⭐ ${user[1].points}\n`;
+    `${medal} <@${user[0]}> — ${emoji.point} ${user[1].points}\n`;
 });
 
 const userRank =
