@@ -1,3 +1,4 @@
+const emoji = require("../config/emojis");
 const fs = require("fs");
 const { EmbedBuilder } = require("discord.js");
 
@@ -76,9 +77,9 @@ if (afk[guildId][message.author.id]) {
   );
 
   const embed = new EmbedBuilder()
-  .setTitle("👋 Welcome Back")
+  .setTitle("${emoji.welcome} Welcome Back")
   .setDescription(
-    `⏰ AFK Duration: ${duration}\n📝 Reason: ${data.reason}\n${mentionText}`
+    `⏰ AFK Duration: ${duration}\n${emoji.note} Reason: ${data.reason}\n${mentionText}`
   )
   .setFooter({
   text: `Mentions: ${mentions.length}`
@@ -103,7 +104,7 @@ for (const user of message.mentions.users.values()) {
   .setTitle("💤 User AFK")
   .setColor("Yellow")
   .setDescription(
-    `💤 ${user.username} is AFK\n📝 Reason: ${afk[guildId][user.id].reason}\n⏰ Since: ${duration} ago`
+    `💤 ${user.username} is AFK\n${emoji.note} Reason: ${afk[guildId][user.id].reason}\n⏰ Since: ${duration} ago`
   )
   .setFooter({
   text: "Clover AFK System"
@@ -178,7 +179,7 @@ try {
   console.error(err);
 
   message.reply(
-    "❌ Error while executing command."
+    "${emoji.error} Error while executing command."
   );
 
 }
