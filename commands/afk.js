@@ -32,7 +32,7 @@ fs.writeFileSync(
 const embed = new EmbedBuilder()
   .setTitle(`${emoji.afk} AFK Enabled`)
   .setDescription(
-    `📝 Reason: ${reason}`
+    `${emoji.note} Reason: ${reason}`
   )
   .setFooter({
     text: "Clover AFK System"
