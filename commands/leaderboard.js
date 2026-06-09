@@ -1,3 +1,4 @@
+const emoji = require("../config/emojis");
 const {
 EmbedBuilder,
 ActionRowBuilder,
@@ -26,10 +27,9 @@ pageUsers.forEach((user, index) => {
 
   let medal = `#${rank}`;
 
-  if (rank === 1) medal = "🥇";
-  if (rank === 2) medal = "🥈";
-  if (rank === 3) medal = "🥉";
-
+if (rank === 1) medal = emoji.gold;
+if (rank === 2) medal = emoji.silver;
+if (rank === 3) medal = emoji.bronze;
   description +=
     `${medal} <@${user[0]}> — ⭐ ${user[1].points}\n`;
 });
