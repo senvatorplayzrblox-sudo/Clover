@@ -1,3 +1,4 @@
+const emoji = require("../config/emojis");
 const fs = require("fs");
 const { EmbedBuilder } = require("discord.js");
 
@@ -29,7 +30,7 @@ fs.writeFileSync(
 );
 
 const embed = new EmbedBuilder()
-  .setTitle("💤 AFK Enabled")
+  .setTitle(`${emoji.afk} AFK Enabled`)
   .setDescription(
     `📝 Reason: ${reason}`
   )
