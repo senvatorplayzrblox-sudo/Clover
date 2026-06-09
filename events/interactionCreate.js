@@ -1,3 +1,4 @@
+const emoji = require("../config/emojis");
 const fs = require("fs");
 const {
   EmbedBuilder,
@@ -37,7 +38,7 @@ if (!shop[guildId]) {
       const embed = new EmbedBuilder()
         .setTitle("🛒 Role Preview")
         .setDescription(
-          `🎭 Role: ${item.name}\n💰 Price: ${item.price}\n📦 Stock: ${item.stock}`
+          `${emoji.role} Role: ${item.name}\n💰 Price: ${item.price}\n${emoji.stock} Stock: ${item.stock}`
         );
 
       const row = new ActionRowBuilder()
@@ -109,17 +110,17 @@ const rank =
 
 let medal = `#${rank}`;
 
-if (rank === 1) medal = "🥇";
-if (rank === 2) medal = "🥈";
-if (rank === 3) medal = "🥉";
+if (rank === 1) medal = emoji.gold;
+if (rank === 2) medal = emoji.silver;
+if (rank === 3) medal = emoji.bronze;
 
 description +=
-  `${medal} <@${user[0]}> — ⭐ ${user[1].points}\n`;
+  `${medal} <@${user[0]}> — ${emoji.point} ${user[1].points}\n`;
 
 });
 
 const embed = new EmbedBuilder()
-.setTitle("🏆 Clover Leaderboard")
+.setTitle("${emoji.lb} Clover Leaderboard")
 .setDescription(
 description || "No data yet."
 )
@@ -185,7 +186,7 @@ if (!users[guildId]) {
 
   if (!item || !role) {
     return interaction.reply({
-      content: "❌ Role not found.",
+      content: "${emoji.error} Role not found.",
       ephemeral: true
     });
   }
@@ -201,21 +202,21 @@ if (!users[guildId]) {
   const user = users[guildId][interaction.user.id];
   if (item.stock <= 0) {
     return interaction.reply({
-      content: "❌ Out of stock.",
+      content: "${emoji.error} Out of stock.",
       ephemeral: true
     });
   }
 
   if (interaction.member.roles.cache.has(roleId)) {
     return interaction.reply({
-      content: "❌ You already own this role.",
+      content: "${emoji.error} You already own this role.",
       ephemeral: true
     });
   }
 
   if (user.points < item.price) {
     return interaction.reply({
-      content: `❌ You need ${item.price} points.`,
+      content: `${emoji.error} You need ${item.price} points.`,
       ephemeral: true
     });
   }
@@ -238,9 +239,9 @@ if (!users[guildId]) {
     await interaction.member.roles.add(role);
 
     const embed = new EmbedBuilder()
-      .setTitle("✅ Purchase Successful")
+      .setTitle("${emoji.success} Purchase Successful")
       .setDescription(
-        `🎭 Role: ${role.name}\n💰 Cost: ${item.price}\n📦 Stock Left: ${item.stock}`
+        `${emoji.role} Role: ${role.name}\n💰 Cost: ${item.price}\n ${emoji.stock} Stock Left: ${item.stock}`
       )
       .setTimestamp();
 
@@ -252,7 +253,7 @@ if (!users[guildId]) {
   } catch {
 
     await interaction.reply({
-      content: "❌ I couldn't give that role.",
+      content: "${emoji.error} I couldn't give that role.",
       ephemeral: true
     });
 
