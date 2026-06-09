@@ -40,7 +40,7 @@ const userRank =
   ) + 1;
 
 const embed = new EmbedBuilder()
-  .setTitle("🏆 Clover Leaderboard")
+  .setTitle(`${emoji.lb} Clover Leaderboard`)
   .setDescription(
     description || "No data yet."
   )
