@@ -22,8 +22,20 @@ if (!shop[guildId]) {
 }
 
     if (!shop[guildId].roles.length) {
-      return message.reply("🛒 Store is empty.");
-    }
+
+  const embed = new EmbedBuilder()
+    .setTitle("🛒 Clover Store")
+    .setDescription("Store is currently empty.")
+    .setFooter({
+      text: "Clover Economy Store"
+    })
+    .setTimestamp();
+
+  return message.reply({
+    embeds: [embed]
+  });
+
+}
 
     let description = "";
 
