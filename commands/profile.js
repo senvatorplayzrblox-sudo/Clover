@@ -9,14 +9,14 @@ module.exports = {
     const user = users[message.author.id];
 
     if (!user) {
-      return message.reply("${emoji.error} No profile data found yet.");
+      return message.reply(`${emoji.error} No profile data found yet.`);
     }
 
     const msgProgress = user.messages % 50;
     const vcProgress = user.vcMinutes % 5;
 
     const embed = new EmbedBuilder()
-      .setTitle("${emoji.clover} Clover Profile")
+      .setTitle(`${emoji.clover} Clover Profile`) 
       .setDescription(
 `${emoji.user} User: ${message.author.username}
 
