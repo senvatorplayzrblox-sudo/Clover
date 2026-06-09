@@ -45,7 +45,7 @@ const embed = new EmbedBuilder()
     description || "No data yet."
   )
   .addFields({
-    name: "📍 Your Rank",
+name: `${emoji.rank} Your Rank`,
     value: `#${userRank || "N/A"}`
   })
   .setFooter({
