@@ -57,7 +57,7 @@ const embed = new EmbedBuilder()
 
     const menu = new StringSelectMenuBuilder()
       .setCustomId("store_select")
-      .setPlaceholder(`${emoji.clover} Select a role`);
+      .setPlaceholder("🍀 Select a role");
 
     shop[guildId].roles.forEach(role => {
       menu.addOptions({
