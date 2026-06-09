@@ -1,3 +1,4 @@
+const emoji = require("../config/emojis");
 const fs = require("fs");
 const {
   EmbedBuilder,
@@ -41,13 +42,13 @@ if (!shop[guildId]) {
 
 shop[guildId].roles.forEach((role, index) => {
   description +=
-    `${index + 1}. 🎭 ${role.name}\n` +
-    `💰 ${role.price} points\n` +
+    `${index + 1}. ${emoji.role} ${role.name}\n` +
+    `${emoji.point} ${role.price} points\n` +
     `📦 Stock: ${role.stock}\n\n`;
 });
 
 const embed = new EmbedBuilder()
-  .setTitle("🛒 Clover Store")
+  .setTitle(`${emoji.store} Clover Store`)
   .setDescription(description)
       .setFooter({
         text: "Clover Economy Store"
