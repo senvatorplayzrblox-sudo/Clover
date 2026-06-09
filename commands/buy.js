@@ -1,3 +1,4 @@
+const emoji = require("../config/emojis");
 const fs = require("fs");
 const { EmbedBuilder } = require("discord.js");
 
@@ -110,9 +111,9 @@ fs.writeFileSync(
 );
 
   const embed = new EmbedBuilder()
-    .setTitle("✅ Purchase Successful")
+    .setTitle(`${emoji.success} Purchase Successful`)
     .setDescription(
-      `🎭 Role: ${role.name}\n💰 Cost: ${item.price} points\n📦 Stock Left: ${item.stock}`
+      `${emoji.role} Role: ${role.name}\n${emoji.point} Cost: ${item.price} points\n📦 Stock Left: ${item.stock}`
     )
     .setFooter({
       text: "Clover Store"
