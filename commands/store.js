@@ -33,13 +33,12 @@ if (!shop[guildId]) {
     if (!shop[guildId].roles.length) {
 
   const embed = new EmbedBuilder()
-    .setTitle(`${emoji.store} Clover Store`) 
-    .setDescription("Store is currently empty.")
-    .setFooter({
-      text: "Clover Economy Store"
-    });
-    .setTimestamp();
-
+  .setTitle(`${emoji.store} Clover Store`)
+  .setDescription("Store is currently empty.")
+  .setFooter({
+    text: "Clover Economy Store"
+  })
+  .setTimestamp();
   const reply = await message.reply({
   embeds: [embed]
 });
