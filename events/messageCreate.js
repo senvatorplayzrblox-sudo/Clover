@@ -77,7 +77,7 @@ if (afk[guildId][message.author.id]) {
   );
 
   const embed = new EmbedBuilder()
-  .setTitle("${emoji.welcome} Welcome Back")
+  .setTitle(`${emoji.welcome} Welcome Back`)
   .setDescription(
     `⏰ AFK Duration: ${duration}\n${emoji.note} Reason: ${data.reason}\n${mentionText}`
   )
@@ -101,10 +101,10 @@ for (const user of message.mentions.users.values()) {
   const duration = formatDuration(diff);
 
   const embed = new EmbedBuilder()
-  .setTitle("💤 User AFK")
+  .setTitle(`${emoji.afk} User AFK`)
   .setColor("Yellow")
   .setDescription(
-    `💤 ${user.username} is AFK\n${emoji.note} Reason: ${afk[guildId][user.id].reason}\n⏰ Since: ${duration} ago`
+    `${emoji.afk} ${user.username} is AFK\n${emoji.note} Reason: ${afk[guildId][user.id].reason}\n⏰ Since: ${duration} ago`
   )
   .setFooter({
   text: "Clover AFK System"
@@ -179,7 +179,7 @@ try {
   console.error(err);
 
   message.reply(
-    "${emoji.error} Error while executing command."
+    `${emoji.error} Error while executing command.`
   );
 
 }
