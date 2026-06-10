@@ -25,7 +25,7 @@ if (!shop[guildId]) {
     if (!shop[guildId].roles.length) {
 
   const embed = new EmbedBuilder()
-    .setTitle("🛒 Clover Store")
+    .setTitle(`${emoji.store} Clover Store`) 
     .setDescription("Store is currently empty.")
     .setFooter({
       text: "Clover Economy Store"
