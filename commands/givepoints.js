@@ -1,3 +1,4 @@
+const emoji = require("../config/emojis");
 const fs = require("fs");
 const { EmbedBuilder } = require("discord.js");
 
@@ -9,7 +10,7 @@ module.exports = {
     const OWNER_ID = "1418875905085935637";
 
     if (message.author.id !== OWNER_ID) {
-      return message.reply("❌ Owner only.");
+      return message.reply(`${emoji.error} Owner only.`);
     }
 
     const member =
@@ -47,9 +48,9 @@ module.exports = {
     message.reply({
       embeds: [
         new EmbedBuilder()
-          .setTitle("✅ Points Added")
+          .setTitle(`${emoji.success} Points Added`)
           .setDescription(
-            `👤 ${member.user.username}\n⭐ Added: ${amount}`
+            `${emoji.user} ${member.user.username}\n${emoji.point} Added: ${amount}`
           )
       ]
     });
