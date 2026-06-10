@@ -8,7 +8,7 @@ EmbedBuilder
 module.exports = {
 name: "removerole",
 
-execute(message) {
+async execute(message) {
 
 if (
   !message.member.permissions.has(
@@ -69,9 +69,12 @@ const embed = new EmbedBuilder()
   })
   .setTimestamp();
 
-message.reply({
+const reply = await message.reply({
   embeds: [embed]
 });
 
+setTimeout(() => {
+  reply.delete().catch(() => {});
+}, 30000);
 }
 };
