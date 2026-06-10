@@ -5,7 +5,7 @@ const { EmbedBuilder } = require("discord.js");
 module.exports = {
 name: "afk",
 
-execute(message, users, args) {
+async execute(message, users, args) {
 
 const reason = args.join(" ") || "AFK";
 
@@ -39,9 +39,12 @@ const embed = new EmbedBuilder()
   })
   .setTimestamp();
 
-message.reply({
+const reply = await message.reply({
   embeds: [embed]
 });
 
+setTimeout(() => {
+  reply.delete().catch(() => {});
+}, 20000);
 }
 };
