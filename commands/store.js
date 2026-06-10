@@ -8,6 +8,15 @@ const {
 
 module.exports = {
   name: "store",
+  function fancy(text) {
+  const normal = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+  const bold = "𝗔𝗕𝗖𝗗𝗘𝗙𝗚𝗛𝗜𝗝𝗞𝗟𝗠𝗡𝗢𝗣𝗤𝗥𝗦𝗧𝗨𝗩𝗪𝗫𝗬𝗭𝗮𝗯𝗰𝗱𝗲𝗳𝗴𝗵𝗶𝗷𝗸𝗹𝗺𝗻𝗼𝗽𝗾𝗿𝘀𝘁𝘂𝘃𝘄𝘅𝘆𝘇";
+
+  return text.split("").map(c => {
+    const i = normal.indexOf(c);
+    return i === -1 ? c : bold[i];
+  }).join("");
+  }
 
  async execute(message) {
 
@@ -48,7 +57,7 @@ return;
 
 shop[guildId].roles.forEach((role, index) => {
   description +=
-`${index + 1}. ${emoji.role} **${role.name}**\n` +
+`${index + 1}. ${emoji.role} ${fancy(role.name)}\n` +
 `${emoji.point} ${role.price.toString().replace(/\d/g, d => "𝟬𝟭𝟮𝟯𝟰𝟱𝟲𝟕𝟖𝟗"[d])} points\n` +
 `${emoji.stock} Stock: ${role.stock.toString().replace(/\d/g, d => "𝟬𝟭𝟮𝟯𝟰𝟱𝟲𝟕𝟖𝟗"[d])}\n\n`;
 });
