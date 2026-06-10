@@ -36,7 +36,7 @@ if (!shop[guildId]) {
       if (!item) return;
 
       const embed = new EmbedBuilder()
-        .setTitle("🛒 Role Preview")
+        .setTitle(`${emoji.store} Role Preview`)
         .setDescription(
           `${emoji.role} Role: ${item.name}\n💰 Price: ${item.price}\n${emoji.stock} Stock: ${item.stock}`
         );
@@ -120,7 +120,7 @@ description +=
 });
 
 const embed = new EmbedBuilder()
-.setTitle("${emoji.lb} Clover Leaderboard")
+.setTitle(`${emoji.lb} Clover Leaderboard`)
 .setDescription(
 description || "No data yet."
 )
@@ -186,7 +186,7 @@ if (!users[guildId]) {
 
   if (!item || !role) {
     return interaction.reply({
-      content: "${emoji.error} Role not found.",
+      content: `${emoji.error} Role not found.`,
       ephemeral: true
     });
   }
@@ -202,14 +202,14 @@ if (!users[guildId]) {
   const user = users[guildId][interaction.user.id];
   if (item.stock <= 0) {
     return interaction.reply({
-      content: "${emoji.error} Out of stock.",
+      content: `${emoji.error} Out of stock.`,
       ephemeral: true
     });
   }
 
   if (interaction.member.roles.cache.has(roleId)) {
     return interaction.reply({
-      content: "${emoji.error} You already own this role.",
+      content: `${emoji.error} You already own this role.`,
       ephemeral: true
     });
   }
@@ -239,7 +239,7 @@ if (!users[guildId]) {
     await interaction.member.roles.add(role);
 
     const embed = new EmbedBuilder()
-      .setTitle("${emoji.success} Purchase Successful")
+      .setTitle(`${emoji.success} Purchase Successful`)
       .setDescription(
         `${emoji.role} Role: ${role.name}\n💰 Cost: ${item.price}\n ${emoji.stock} Stock Left: ${item.stock}`
       )
@@ -253,7 +253,7 @@ if (!users[guildId]) {
   } catch {
 
     await interaction.reply({
-      content: "${emoji.error} I couldn't give that role.",
+      content: `${emoji.error} I couldn't give that role.`,
       ephemeral: true
     });
 
