@@ -8,7 +8,7 @@ EmbedBuilder
 module.exports = {
 name: "addrole",
 
-execute(message, users, args) {
+async execute(message, users, args) {
 
 if (
   !message.member.permissions.has(
@@ -90,9 +90,12 @@ const embed = new EmbedBuilder()
   })
   .setTimestamp();
 
-message.reply({
+const reply = await message.reply({
   embeds: [embed]
 });
 
+setTimeout(() => {
+  reply.delete().catch(() => {});
+}, 30000);
 }
 };
