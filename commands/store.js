@@ -56,8 +56,8 @@ return;
 shop[guildId].roles.forEach((role, index) => {
   description +=
 `${index + 1}. ${emoji.role} **${role.name}**\n` +
-`${emoji.point} ${role.price} points\n` +
-`${emoji.store} Stock: ${role.stock}\n\n`;
+`${emoji.point} **${role.price}** points\n` +
+`${emoji.stock} Stock: **${role.stock}**\n\n`;
 });
 
 const embed = new EmbedBuilder()
