@@ -19,7 +19,7 @@ if (!role) {
   return message.reply({
     embeds: [
       new EmbedBuilder()
-        .setTitle("${emoji.error} Invalid Usage")
+        .setTitle(`${emoji.error} Invalid Usage`) 
         .setDescription("Usage: `$buy @role`")
     ]
   });
@@ -44,7 +44,7 @@ if (!item) {
   return message.reply({
     embeds: [
       new EmbedBuilder()
-        .setTitle("${emoji.error} Purchase Failed")
+        .setTitle(`${emoji.error} Purchase Failed`)
         .setDescription("That role is not in the store.")
     ]
   });
@@ -60,7 +60,7 @@ if (item.stock <= 0) {
   return message.reply({
     embeds: [
       new EmbedBuilder()
-        .setTitle("${emoji.error} Out of Stock")
+        .setTitle(`${emoji.error} Out of Stock`)
         .setDescription("This role is out of stock.")
     ]
   });
@@ -70,7 +70,7 @@ if (message.member.roles.cache.has(role.id)) {
   return message.reply({
     embeds: [
       new EmbedBuilder()
-        .setTitle("${emoji.error} Purchase Failed")
+        .setTitle(`${emoji.error} Purchase Failed`)
         .setDescription("You already own this role.")
     ]
   });
@@ -80,7 +80,7 @@ if (user.points < item.price) {
   return message.reply({
     embeds: [
       new EmbedBuilder()
-        .setTitle("${emoji.error} Not Enough Points")
+        .setTitle(`${emoji.error} Not Enough Points`)
         .setDescription(
           `You need ${item.price} points.`
         )
@@ -131,7 +131,7 @@ fs.writeFileSync(
   message.reply({
     embeds: [
       new EmbedBuilder()
-        .setTitle("${emoji.error} Error")
+        .setTitle(`${emoji.error} Error`)
         .setDescription(
           "I couldn't give that role."
         )
