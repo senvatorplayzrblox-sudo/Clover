@@ -1,3 +1,4 @@
+const emoji = require("../config/emojis");
 const fs = require("fs");
 const {
   PermissionsBitField,
@@ -17,7 +18,7 @@ module.exports = {
       return message.reply({
         embeds: [
           new EmbedBuilder()
-            .setTitle("❌ Permission Denied")
+            .setTitle(`${emoji.error} Permission Denied`)
             .setDescription("Admin only.")
         ]
       });
@@ -30,7 +31,7 @@ module.exports = {
       return message.reply({
         embeds: [
           new EmbedBuilder()
-            .setTitle("❌ Invalid Usage")
+            .setTitle(`${emoji.error} Invalid Usage`)
             .setDescription(
               "Usage: `$setprice @role <price>`"
             )
@@ -57,7 +58,7 @@ if (!shop[guildId]) {
       return message.reply({
         embeds: [
           new EmbedBuilder()
-            .setTitle("❌ Error")
+            .setTitle(`${emoji.error} Error`)
             .setDescription("Role not found in store.")
         ]
       });
@@ -73,9 +74,9 @@ if (!shop[guildId]) {
     message.reply({
       embeds: [
         new EmbedBuilder()
-          .setTitle("✅ Price Updated")
+          .setTitle(`${emoji.success} Price Updated`)
           .setDescription(
-            `🎭 ${role.name}\n💰 New Price: ${price}`
+            `${emoji.role} ${role.name}\n💰 New Price: ${price}`
           )
       ]
     });
