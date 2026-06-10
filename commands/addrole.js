@@ -1,3 +1,4 @@
+const emoji = require("../config/emojis");
 const fs = require("fs");
 const {
 PermissionsBitField,
@@ -17,7 +18,7 @@ if (
   return message.reply({
     embeds: [
       new EmbedBuilder()
-        .setTitle("❌ Permission Denied")
+        .setTitle(`${emoji.error} Permission Denied`)
         .setDescription("Admin only.")
     ]
   });
@@ -32,7 +33,7 @@ if (!price || !stock || !role) {
   return message.reply({
     embeds: [
       new EmbedBuilder()
-        .setTitle("❌ Invalid Usage")
+        .setTitle(`${emoji.error} Invalid Usage`)
         .setDescription(
           "Usage: `$addrole <price> <stock> @role`"
         )
@@ -59,7 +60,7 @@ if (existingRole) {
   return message.reply({
     embeds: [
       new EmbedBuilder()
-        .setTitle("❌ Already Added")
+        .setTitle(`${emoji.error} Already Added`)
         .setDescription(
           "That role is already in the store."
         )
@@ -80,9 +81,9 @@ fs.writeFileSync(
 );
 
 const embed = new EmbedBuilder()
-  .setTitle("✅ Role Added")
+  .setTitle(`${emoji.success} Role Added`)
   .setDescription(
-    `🎭 Role: ${role.name}\n💰 Price: ${price}\n📦 Stock: ${stock}`
+    `${emoji.role} Role: ${role.name}\n💰 Price: ${price}\n${emoji.stock} Stock: ${stock}`
   )
   .setFooter({
     text: "Clover Store Setup"
