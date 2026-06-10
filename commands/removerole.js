@@ -1,3 +1,4 @@
+const emoji = require("../config/emojis");
 const fs = require("fs");
 const {
 PermissionsBitField,
@@ -17,7 +18,7 @@ if (
   return message.reply({
     embeds: [
       new EmbedBuilder()
-        .setTitle("❌ Permission Denied")
+        .setTitle(`${emoji.error} Permission Denied`)
         .setDescription("Admin only.")
     ]
   });
@@ -29,7 +30,7 @@ if (!role) {
   return message.reply({
     embeds: [
       new EmbedBuilder()
-        .setTitle("❌ Invalid Usage")
+        .setTitle(`${emoji.error} Invalid Usage`)
         .setDescription(
           "Usage: `$removerole @role`"
         )
@@ -59,9 +60,9 @@ fs.writeFileSync(
 );
 
 const embed = new EmbedBuilder()
-  .setTitle("✅ Role Removed")
+  .setTitle(`${emoji.success} Role Removed`)
   .setDescription(
-    `🎭 Role: ${role.name}\n🗑️ Removed from store`
+    `${emoji.role} Role: ${role.name}\n🗑️ Removed from store`
   )
   .setFooter({
     text: "Clover Store Setup"
