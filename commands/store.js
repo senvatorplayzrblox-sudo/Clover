@@ -9,7 +9,7 @@ const {
 module.exports = {
   name: "store",
 
-  execute(message) {
+ async execute(message) {
 
     const shop = JSON.parse(
       fs.readFileSync("./data/shop.json", "utf8")
@@ -32,9 +32,15 @@ if (!shop[guildId]) {
     })
     .setTimestamp();
 
-  return message.reply({
-    embeds: [embed]
-  });
+  const reply = await message.reply({
+  embeds: [embed]
+});
+
+setTimeout(() => {
+  reply.delete().catch(() => {});
+}, 15000);
+
+return;
 
 }
 
