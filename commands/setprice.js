@@ -8,7 +8,7 @@ const {
 module.exports = {
   name: "setprice",
 
-  execute(message, users, args) {
+  async execute(message, users, args) {
 
     if (
       !message.member.permissions.has(
@@ -71,14 +71,18 @@ if (!shop[guildId]) {
       JSON.stringify(shop, null, 2)
     );
 
-    message.reply({
-      embeds: [
-        new EmbedBuilder()
-          .setTitle(`${emoji.success} Price Updated`)
-          .setDescription(
-            `${emoji.role} ${role.name}\n💰 New Price: ${price}`
-          )
-      ]
-    });
+    const reply = await message.reply({
+  embeds: [
+    new EmbedBuilder()
+      .setTitle(`${emoji.success} Price Updated`)
+      .setDescription(
+        `${emoji.role} ${role.name}\n${emoji.point} New Price: ${price}`
+      )
+  ]
+});
+
+setTimeout(() => {
+  reply.delete().catch(() => {});
+}, 30000);
   }
 };
