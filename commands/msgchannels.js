@@ -14,7 +14,7 @@ module.exports = {
         PermissionsBitField.Flags.Administrator
       )
     ) {
-      return message.reply("❌ Admin only.");
+      return message.reply(`${emoji.error} Admin only.`);
     }
 
     const settings = JSON.parse(
@@ -49,7 +49,7 @@ module.exports = {
       return message.reply({
         embeds: [
           new EmbedBuilder()
-            .setTitle("🌿 Message Channels")
+            .setTitle(`${emoji.clover} Message Channels`)
             .setDescription(list)
         ]
       });
@@ -79,7 +79,7 @@ module.exports = {
       );
 
       return message.reply(
-        "✅ Channels added."
+        `${emoji.success} Channels added.`
       );
     }
 
@@ -102,7 +102,7 @@ module.exports = {
       );
 
       return message.reply(
-        "✅ Channels removed."
+        `${emoji.success} Channels removed.`
       );
     }
 
