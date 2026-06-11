@@ -115,7 +115,7 @@ if (rank === 2) medal = emoji.silver;
 if (rank === 3) medal = emoji.bronze;
 
 description +=
-  `${medal} <@${user[0]}> — ${emoji.point} ${user[1].points}\n`;
+`${medal} **<@${user[0]}>**\n> ${emoji.point} **${user[1].points} Points**\n\n`;
 
 });
 
