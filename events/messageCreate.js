@@ -138,7 +138,19 @@ if (!users[guildId][message.author.id]) {
     vcMinutes: 0
   };
 }
+const settings = JSON.parse(
+  fs.readFileSync("./data/settings.json", "utf8")
+);
 
+const allowedChannels =
+  settings[guildId]?.messageChannels || [];
+
+if (
+  allowedChannels.length > 0 &&
+  !allowedChannels.includes(message.channel.id)
+) {
+  return;
+}
 // MESSAGE XP
 users[guildId][message.author.id].messages++;
 
