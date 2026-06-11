@@ -17,6 +17,7 @@ function fancy(text) {
 
 module.exports = {
   name: "store",
+aliases: ["shop"],
  async execute(message) {
 
     const shop = JSON.parse(
