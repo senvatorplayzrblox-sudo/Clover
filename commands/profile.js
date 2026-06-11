@@ -18,11 +18,11 @@ module.exports = {
     const embed = new EmbedBuilder()
       .setTitle(`${emoji.clover} Clover Profile`) 
       .setDescription(
-`${emoji.user} User: ${message.author.username}
+`${emoji.user} User: <@${message.author.id}>
 
-${emoji.point} Points: ${user.points}
-${emoji.messages} Messages: ${msgProgress}/50
-${emoji.vc} VC Minutes: ${vcProgress}/5`
+${emoji.point} Points: **${user.points}**
+${emoji.messages} Messages: **${msgProgress}/50**
+${emoji.vc} VC Minutes: **${vcProgress}/5**`
       )
       .setFooter({
         text: "Clover Economy System"
