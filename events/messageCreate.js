@@ -146,6 +146,7 @@ const allowedChannels =
   settings[guildId]?.messageChannels || [];
 
 if (
+  !message.content.startsWith("$") &&
   allowedChannels.length > 0 &&
   !allowedChannels.includes(message.channel.id)
 ) {
