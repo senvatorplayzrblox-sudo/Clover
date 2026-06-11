@@ -1,3 +1,4 @@
+const emoji = require("../config/emojis");
 const fs = require("fs");
 const {
   PermissionsBitField,
@@ -78,9 +79,21 @@ module.exports = {
         JSON.stringify(settings, null, 2)
       );
 
-      return message.reply(
-        `${emoji.success} Channels added.`
-      );
+      return message.reply({
+  embeds: [
+    new EmbedBuilder()
+      .setTitle(`${emoji.success} Channels Added`)
+      .setDescription(
+        message.mentions.channels
+          .map(ch => `${ch}`)
+          .join("\n")
+      )
+      .setFooter({
+        text: "Clover Message Channels"
+      })
+      .setTimestamp()
+  ]
+});
     }
 
     if (
@@ -101,14 +114,36 @@ module.exports = {
         JSON.stringify(settings, null, 2)
       );
 
-      return message.reply(
-        `${emoji.success} Channels removed.`
-      );
+      return message.reply({
+  embeds: [
+    new EmbedBuilder()
+      .setTitle(`${emoji.success} Channels Removed`)
+      .setDescription(
+        message.mentions.channels
+          .map(ch => `${ch}`)
+          .join("\n")
+      )
+      .setFooter({
+        text: "Clover Message Channels"
+      })
+      .setTimestamp()
+  ]
+});
     }
 
-    message.reply(
-      "Usage: $msgchannels add/remove/view"
-    );
+    message.reply({
+  embeds: [
+    new EmbedBuilder()
+      .setTitle(`${emoji.error} Invalid Usage`)
+      .setDescription(
+        "`$msgchannels add #channel`\n`$msgchannels remove #channel`\n`$msgchannels view`"
+      )
+      .setFooter({
+        text: "Clover Message Channels"
+      })
+      .setTimestamp()
+  ]
+});
 
   }
 };
