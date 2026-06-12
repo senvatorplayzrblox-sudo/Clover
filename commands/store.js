@@ -56,7 +56,7 @@ return;
 
 shop[guildId].roles.forEach((role, index) => {
   description +=
-`${index + 1}. ${emoji.role} **${role.name}**\n` +
+`${index + 1}. ${emoji.role} <@&${role.roleId}>\n` +
 `${emoji.point} **${role.price}** points\n` +
 `${emoji.stock} Stock: **${role.stock}**\n\n`;
 });
