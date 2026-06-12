@@ -113,7 +113,7 @@ fs.writeFileSync(
   const embed = new EmbedBuilder()
     .setTitle(`${emoji.success} Purchase Successful`)
     .setDescription(
-      `${emoji.role} Role: ${role.name}\n${emoji.point} Cost: ${item.price} points\n📦 Stock Left: ${item.stock}`
+      `${emoji.role} 𝗥𝗼𝗹𝗲: ${role.name}\n${emoji.point} 💰 𝗖𝗼𝘀𝘁: ${item.price} points\n${emoji.stock}𝗦𝘁𝗼𝗰𝗸 𝗟𝗲𝗳𝘁: ${item.stock}`
     )
     .setFooter({
       text: "Clover Store"
