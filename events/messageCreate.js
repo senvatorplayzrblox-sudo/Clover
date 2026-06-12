@@ -79,7 +79,7 @@ if (afk[guildId][message.author.id]) {
   const embed = new EmbedBuilder()
   .setTitle(`${emoji.welcome} Welcome Back`)
   .setDescription(
-    `⏰ AFK Duration: ${duration}\n${emoji.note} Reason: ${data.reason}\n${mentionText}`
+    `⏰ 𝗔𝗙𝗞 𝗗𝘂𝗿𝗮𝘁𝗶𝗼𝗻: ${duration}\n${emoji.note} 𝗥𝗲𝗮𝘀𝗼𝗻: ${data.reason}\n${mentionText}`
   )
   .setFooter({
   text: `Mentions: ${mentions.length}`
@@ -104,7 +104,7 @@ for (const user of message.mentions.users.values()) {
   .setTitle(`${emoji.warning} User AFK`)
   .setColor("Yellow")
   .setDescription(
-    `${emoji.afk} ${user.username} is AFK\n${emoji.note} Reason: ${afk[guildId][user.id].reason}\n⏰ Since: ${duration} ago`
+    `${emoji.afk} **${user.username}** is AFK\n${emoji.note} 𝗥𝗲𝗮𝘀𝗼𝗻: ${afk[guildId][user.id].reason}\n⏰ 𝗦𝗶𝗻𝗰𝗲:${duration} ago`
   )
   .setFooter({
   text: "Clover AFK System"
