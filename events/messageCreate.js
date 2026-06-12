@@ -101,7 +101,7 @@ for (const user of message.mentions.users.values()) {
   const duration = formatDuration(diff);
 
   const embed = new EmbedBuilder()
-  .setTitle(`${emoji.afk} User AFK`)
+  .setTitle(`${emoji.warning} User AFK`)
   .setColor("Yellow")
   .setDescription(
     `${emoji.afk} ${user.username} is AFK\n${emoji.note} Reason: ${afk[guildId][user.id].reason}\n⏰ Since: ${duration} ago`
