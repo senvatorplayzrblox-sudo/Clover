@@ -50,7 +50,7 @@ module.exports = {
       return message.reply({
         embeds: [
           new EmbedBuilder()
-            .setTitle(`${emoji.clover} Message Channels`)
+            .setTitle(`${emoji.messages} 𝗠𝗲𝘀𝘀𝗮𝗴𝗲 𝗖𝗵𝗮𝗻𝗻𝗲𝗹𝘀`)
             .setDescription(list)
         ]
       });
